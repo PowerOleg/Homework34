@@ -3,13 +3,13 @@ import java.util.Map;
 //1Don't repeat
 //2Single responsibility
 //3open to extends -closed fields
-//4extend when it can play the same role
+//4extend if it can play the same role
 //5many interfaces with a method
 //6depend on interfaces
 
 
 
-public class Purchase {                                             //методы не зависят от интерфейса
+public class Purchase implements PurchaseManaging {                                             //методы не зависят от интерфейса
     protected String title;
     protected int count;
     protected Purchase[] purchases = new Purchase[4]; //массив объектов-идеальное ООП              //static?
