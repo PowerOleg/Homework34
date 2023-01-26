@@ -1,4 +1,3 @@
-import java.util.Map;
 //0Magic
 //1Don't repeat
 //2Single responsibility
@@ -8,22 +7,22 @@ import java.util.Map;
 //6depend on interfaces
 
 
-
 public class Purchase implements PurchaseManaging {
     protected String title;
     protected int count;
-    protected Purchase[] purchases;               
+    protected Purchase[] purchases;                                 //сделал инициализацию в конструкторе
+    //использовалась конкретная цифра
 
 
-
-    public Purchase(String title, int count) {         //что-то тут с count, вроде не где не назначается так зачем передавать?
-        this.title = title;                            //что-то с этим конструктором совсем непонятно
+    public Purchase(String title, int count) {
+        this.title = title;
         this.count = count;
-        purchases = new Purchase[4];                    //используется конкретная цифра
     }
 
-    public Purchase() {
+    public Purchase(int length) {
+        purchases = new Purchase[length];                                                       //1 добавил строчку и аргумент
     }
+
     public void addPurchase(String title, int count) {
         for (int i = 0; i < purchases.length; i++) {
             if (purchases[i] == null) {
@@ -35,22 +34,5 @@ public class Purchase implements PurchaseManaging {
                 return;
             }
         }
-    }
-
-
-                                //как сопоставляется длинны массивов?
-    public long sum(Map<String, Integer> prices) {                                   //а не лишний ли ты здесь дружок?
-                                                                                    //может отнаследоваться и добавить метод?
-        long sum = 0;
-        System.out.println("КОРЗИНА:");
-        Purchase purchase;                                                          //вынес
-        for (int i = 0; i < purchases.length; i++) {
-            purchase = purchases[i];                    //хм почему напрямую нельзя использовать purchases[i]?
-            if (purchase == null) continue;
-            System.out.println("\t" + purchase.title + " " + purchase.count + " шт. в сумме " +
-                    (purchase.count * prices.get(purchase.title)) + " руб.");
-            sum += purchase.count * prices.get(purchase.title);
-        }
-        return sum;
     }
 }
