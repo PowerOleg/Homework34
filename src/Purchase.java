@@ -9,16 +9,17 @@ import java.util.Map;
 
 
 
-public class Purchase implements PurchaseManaging {                                             //методы не зависят от интерфейса
+public class Purchase implements PurchaseManaging {
     protected String title;
     protected int count;
-    protected Purchase[] purchases = new Purchase[4]; //массив объектов-идеальное ООП              //static?
-                                                                    //инициировано не там
-                                                                    //используется конкретная цифра
+    protected Purchase[] purchases;               
+
+
 
     public Purchase(String title, int count) {         //что-то тут с count, вроде не где не назначается так зачем передавать?
-        this.title = title;
+        this.title = title;                            //что-то с этим конструктором совсем непонятно
         this.count = count;
+        purchases = new Purchase[4];                    //используется конкретная цифра
     }
 
     public Purchase() {
@@ -35,8 +36,8 @@ public class Purchase implements PurchaseManaging {                             
             }
         }
     }
-                                //есть мапа с наименованием - цена и есть массив с объектами purchase
-                                // где количество продуктов и наименование, а нафига мапа тогда? можно было цену хронить в объекте
+
+
                                 //как сопоставляется длинны массивов?
     public long sum(Map<String, Integer> prices) {                                   //а не лишний ли ты здесь дружок?
                                                                                     //может отнаследоваться и добавить метод?
