@@ -1,9 +1,9 @@
 import java.util.Map;
 import java.util.Scanner;
 
-import purchase.Purchase;
+import purchase.Manager;
 
-import static utility.UtilClass.*;
+import static utils.UtilClass.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println("Введите два слова: название товара и количество. Или end");
         Scanner scanner = new Scanner(System.in);
-        Purchase purchase = new Purchase(products.size());
+        Manager manager = new Manager(products.size());
         String line;
         String product;
         int count;
@@ -22,9 +22,8 @@ public class Main {
             String[] parts = line.split(" ");
             product = parts[0];
             count = Integer.parseInt(parts[1]);
-            purchase.addPurchase(product, count);
+            manager.addPurchase(product, count);
         }
-        purchase.sum(products);
+        manager.sum(products);
     }
-
 }
